@@ -28,8 +28,11 @@ class _ImagePageState extends State<ImagePage> {
       body: SafeArea(
           child: Column(
         children: [
-          Image.network(
-            widget.link,
+          Expanded(
+            child: Image.network(
+              widget.link,
+              fit: BoxFit.cover,
+            ),
           ),
         ],
       )),
