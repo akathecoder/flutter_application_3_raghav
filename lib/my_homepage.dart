@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_3_raghav/image_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -68,13 +69,26 @@ class _MyHomePageState extends State<MyHomePage> {
             itemBuilder:
                 (BuildContext context, int itemIndex, int pageViewIndex) =>
                     Center(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                decoration: const BoxDecoration(color: Colors.amber),
-                child: Image.network(
-                  images[itemIndex],
-                  fit: BoxFit.cover,
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ImagePage(
+                        title: "Video Player",
+                        link: images[itemIndex],
+                      ),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                  decoration: const BoxDecoration(color: Colors.amber),
+                  child: Image.network(
+                    images[itemIndex],
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
